@@ -1,11 +1,8 @@
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 
 public class Main {
 
-    static public void inOutChar(FileInputStream fis, FileOutputStream fos, char previousSymbol)
+    static public void inOutChar(BufferedReader fis, FileOutputStream fos, char previousSymbol)
     {
         try {
             char currentSymbol = (char)(fis.read());
@@ -23,7 +20,7 @@ public class Main {
 
     public static void main(String[] argv) throws IOException {
 
-        FileInputStream fis = new FileInputStream(new File("input.txt"));
+        BufferedReader fis = new BufferedReader(new InputStreamReader(System.in));
         FileOutputStream fos = new FileOutputStream(new File("output.txt"));
 
         inOutChar(fis, fos, '0');
