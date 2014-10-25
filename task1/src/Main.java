@@ -1,30 +1,48 @@
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 
 public class Main {
 
-    static public void inOutChar(BufferedReader fis, FileOutputStream fos, char previousSymbol)
-    {
-        try {
+    static public void inOutChar(FileInputStream fis, PrintWriter inPrintWriter, char previousSymbol){
+        try{
             char currentSymbol = (char)(fis.read());
-
-            if ((currentSymbol != ' ') || (previousSymbol != ' ')){
-                inOutChar(fis, fos, currentSymbol);
+            if ((previousSymbol != ' ') || (currentSymbol != ' ')){
+                inOutChar(fis, inPrintWriter, currentSymbol);
             }
-
-            fos.write(currentSymbol);
-
-        } catch (IOException e) {
+            inPrintWriter.print(currentSymbol);
+        } catch (IOException e){
             e.printStackTrace();
         }
     }
 
     public static void main(String[] argv) throws IOException {
 
-        BufferedReader fis = new BufferedReader(new InputStreamReader(System.in));
-        FileOutputStream fos = new FileOutputStream(new File("output.txt"));
+        File readFile = new File("input.txt");
+        File writeFile = new File("output.txt");
+        File checkFile = new File("checkerAnswers.txt");
 
-        inOutChar(fis, fos, '0');
+        FileInputStream fis = new FileInputStream(readFile);
+        PrintWriter myPrintWriter = new PrintWriter(writeFile);
 
+        int testsCount = 100;
+
+        Tester myTester = new Tester();
+        myTester.setTestPrintWriterFile(readFile);
+        myTester.setTestsCount(testsCount);
+        myTester.generateTest();
+
+        for (int i = 0; i < testsCount; i++){
+            inOutChar(fis, myPrintWriter, '0');
+            myPrintWriter.print('\n');
+            fis.read();            // ignore endLine symbol
+        }
+        fis.close();
+        myPrintWriter.close();
+
+        myTester.setInOutCheckFiles(readFile, writeFile, checkFile);
+        myTester.checkAnswers();
     }
-
 }
