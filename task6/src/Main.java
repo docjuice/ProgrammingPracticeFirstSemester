@@ -5,8 +5,8 @@ public class Main {
 
     public static int game(int x){
         int answer = 0,
-            leftBorder = 1,
-            rightBorder = 100,
+            leftBorder = 0,
+            rightBorder = 101,
             supposX = (leftBorder + rightBorder) / 2;
 
         while (supposX != x){
@@ -20,9 +20,6 @@ public class Main {
             }
 
             supposX = (leftBorder + rightBorder) / 2;
-            if (leftBorder == 99){
-                supposX = rightBorder;
-            }
         }
 
         return answer;

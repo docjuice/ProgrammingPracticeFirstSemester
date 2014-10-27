@@ -24,25 +24,25 @@ public class Main {
         File writeFile = new File("output.txt");
         File checkFile = new File("checkerAnswers.txt");
 
-        FileInputStream fis = new FileInputStream(readFile);
-        PrintWriter myPrintWriter = new PrintWriter(writeFile);
-
         int testsCount = 100;
 
         Tester myTester = new Tester();
-        myTester.setTestPrintWriterFile(readFile);
-        myTester.setTestsCount(testsCount);
-        myTester.generateTest();
+        myTester.setAnswersPrintWriterFile(checkFile);
 
         for (int i = 0; i < testsCount; i++){
-            inOutChar(fis, myPrintWriter, '0');
-            myPrintWriter.print('\n');
-            fis.read();            // ignore endLine symbol
-        }
-        fis.close();
-        myPrintWriter.close();
+            myTester.setTestPrintWriterFile(readFile);
+            myTester.generateTest();
 
-        myTester.setInOutCheckFiles(readFile, writeFile, checkFile);
-        myTester.checkAnswers();
+            FileInputStream fis = new FileInputStream(readFile);
+            PrintWriter myPrintWriter = new PrintWriter(writeFile);
+            inOutChar(fis, myPrintWriter, '0');
+            fis.close();
+            myPrintWriter.close();
+
+            myTester.setInOutCheckFiles(readFile, writeFile);
+            myTester.checkAnswer();
+        }
+
+        myTester.closeAnswerPrintWriter();
     }
 }

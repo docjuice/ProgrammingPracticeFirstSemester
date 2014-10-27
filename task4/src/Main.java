@@ -34,6 +34,7 @@ public class Main {
         for (int i = 0; i < lenArray; ++i){
             myPrintWriter.print(myArray[i] + " ");
         }
+        //myPrintWriter.print(lenArray);
 
         myPrintWriter.close();
 

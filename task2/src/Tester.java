@@ -3,8 +3,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Vector;
 
-public class Tester{
+public class Tester {
 
     private Scanner inTestScanner;
     private Scanner outTestScanner;
@@ -30,20 +31,24 @@ public class Tester{
 
     public void generateTest(){
         Random testRandom = new Random();
+        int wordsCount = testRandom.nextInt(100) + 1;
 
-            int stringLength = testRandom.nextInt(1000) + 255;
+        for (int j = 0; j < wordsCount; j++){
+            int stringLength = testRandom.nextInt(20) + 1;
 
             for (int i = 0; i < stringLength; i++){
-                char randomChar = (char)(testRandom.nextInt(26) + (int)('A'));
+                char randomChar = (char)(testRandom.nextInt(26) + (int)('a'));
                 testPrintWriter.print(randomChar);
             }
-            testPrintWriter.print("  ");
-            testPrintWriter.close();
+            testPrintWriter.print(" ");
+        }
+
+        testPrintWriter.close();
     }
 
-    private static boolean check(String s1, String s2){
-        for (int i = 0; i < s1.length(); i++){
-            if (s1.charAt(i) != s2.charAt(s2.length() - i - 1)){
+    private static boolean check(Vector<Object> s1, Vector<Object> s2){
+        for (int i = 0; i < s1.size(); i++){
+            if (!s1.get(i).equals(s2.get(s2.size() - i - 1))){
                 return false;
             }
         }
@@ -51,16 +56,20 @@ public class Tester{
     }
 
     public void checkAnswer(){
-        String strings1;
-        String strings2;
+        Vector<Object> s1 = new Vector<Object>();
+        Vector<Object> s2 = new Vector<Object>();
 
-        strings1 = inTestScanner.nextLine();
+        while (inTestScanner.hasNext()){
+            s1.add(inTestScanner.next());
+        }
         inTestScanner.close();
 
-        strings2 = outTestScanner.nextLine();
+        while (outTestScanner.hasNext()){
+            s2.add(outTestScanner.next());
+        }
         outTestScanner.close();
 
-        if (check(strings1, strings2)) {
+        if (check(s1, s2)) {
             answersPrintWriter.print("OK\n");
             } else{
             answersPrintWriter.print("Oops FAIL\n");
