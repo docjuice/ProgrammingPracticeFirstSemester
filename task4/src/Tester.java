@@ -4,7 +4,6 @@ import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.Vector;
 
 public class Tester {
 
@@ -32,8 +31,9 @@ public class Tester {
 
     public void generateTest(){
         Random testRandom = new Random();
-        int length = testRandom.nextInt(100) + 1;
-        int k = testRandom.nextInt(length) + 1;
+        int k = testRandom.nextInt(10) + 1;
+        int length = (int)Math.pow(2, k);
+
         testPrintWriter.println(k);
 
         for (int i = 0; i < length; i++){
@@ -42,25 +42,60 @@ public class Tester {
         testPrintWriter.close();
     }
 
-    private static boolean check(int k, Integer[] s, int answer){
-        Arrays.sort(s);
-        return (s[k] == answer);
+    private static boolean check(int[] a, int[] b){
+        return Arrays.equals(a, b);
+    }
+
+    public static int bitReverse(int x, int k){
+        String s = "";
+
+        while (x > 0){
+            int mod = x % 2;
+            s = (char)(mod + '0') + s;
+            x /= 2;
+        }
+
+        while (s.length() < k){
+            s = '0' + s;
+        }
+
+        int answer = 0;
+        for (int i = 0; i < s.length(); i++){
+            answer += (s.charAt(i) - '0') * (int)Math.pow(2, i);
+        }
+
+        return answer;
+    }
+
+    public static void ArrayBitReverse(int[] inArray, int lenArray, int k){
+        for (int i = 0; i < lenArray; ++i){
+            int j = bitReverse(i ,k);
+            if (j >= i){
+                int temp = inArray[i];
+                inArray[i] = inArray[j];
+                inArray[j] = temp;
+            }
+        }
     }
 
     public void checkAnswer(){
-        Vector<Integer> a = new Vector<Integer>();
-        int k = inTestScanner.nextInt() - 1;
-        while (inTestScanner.hasNext()){
-            a.add(inTestScanner.nextInt());
+
+        int k = inTestScanner.nextInt();
+        int length = (int)Math.pow(2, k);
+        int[] a = new int[length];
+        for (int i = 0; i < length; i++){
+            a[i] = inTestScanner.nextInt();
         }
         inTestScanner.close();
+        ArrayBitReverse(a, length, k);
 
-        Integer[] s = new Integer[a.size()];
-        a.toArray(s);
+        int[] b = new int[length];
+        for (int i = 0; i < length; i++){
+            b[i] = outTestScanner.nextInt();
+        }
+        outTestScanner.close();
 
-        int answer = outTestScanner.nextInt();
-
-        if (check(k, s, answer)) {
+        if (check(a, b)) {
             answersPrintWriter.print("OK\n");
             } else{
             answersPrintWriter.print("Oops FAIL\n");

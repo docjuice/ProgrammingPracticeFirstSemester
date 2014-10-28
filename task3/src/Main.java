@@ -20,8 +20,8 @@ public class Main {
         int i = leftBorder, j = rightBorder;
 
         while (i <= j){
-            while (inNumbers.get(i) > x) i++;
-            while (inNumbers.get(j) < x) j--;
+            while (inNumbers.get(i) < x) i++;
+            while (inNumbers.get(j) > x) j--;
 
             if (i <= j){
                 swap(inNumbers, i, j);
