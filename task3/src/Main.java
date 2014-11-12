@@ -33,7 +33,6 @@ public class Main {
         if ((leftBorder <= k) && (k <= j)){
             return findMaxNumber(inNumbers, leftBorder, j, k);
         }
-
         if ((i <= k) && (k <= rightBorder)){
             return findMaxNumber(inNumbers, i, rightBorder, k);
         }
@@ -48,7 +47,7 @@ public class Main {
 
         int testsCount = 100;
         Tester myTester = new Tester();
-        myTester.setAnswersPrintWriterFile(checkFile);
+        //myTester.setAnswersPrintWriterFile(checkFile);
 
         for (int i = 0; i < testsCount; i++){
             myTester.setTestPrintWriterFile(readFile);

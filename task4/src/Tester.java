@@ -12,6 +12,10 @@ public class Tester {
     private PrintWriter testPrintWriter;
     private PrintWriter answersPrintWriter;
 
+    public Tester(){
+        this.answersPrintWriter = new PrintWriter(System.out);
+    }
+
     public void setTestPrintWriterFile(File inFile) throws IOException{
         this.testPrintWriter = new PrintWriter(inFile);
     }

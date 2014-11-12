@@ -3,36 +3,36 @@ import java.io.*;
 
 public class Main {
 
-    public static int game(int x){
-        int answer = 0,
-            leftBorder = 0,
-            rightBorder = 101,
-            supposX = (leftBorder + rightBorder) / 2;
+    public static int game(int x, int min, int max){
+        int median = (max - min) / 3 + 1;
 
-        while (supposX != x){
-            if (supposX < x){
-                answer += 1;
-                leftBorder = supposX;
-            }
-            if (supposX > x){
-                answer += 2;
-                rightBorder = supposX;
-            }
-
-            supposX = (leftBorder + rightBorder) / 2;
+        if (min + median - 1 == x){
+            return 0;
         }
-
-        return answer;
+        if (min + median - 1 > x){
+            return game(x, min, min + median - 2) + 2;
+        } else{
+            return game(x, min + median, max) + 1;
+        }
     }
 
     public static void main(String[] args) throws IOException{
-        Scanner myScanner = new Scanner(new File("input.txt"));
-        PrintWriter myPrintWriter = new PrintWriter(new File("output.txt"));
+        File readFile = new File("input.txt");
+        Scanner myScanner = new Scanner(readFile);
+        PrintWriter myPrintWriter = new PrintWriter(System.out);
+
+        int max = 0;
 
         for (int i = 1; i <= 100; i++){
-            myPrintWriter.println(i + " - " + game(i));
+            int doGame = game(i, 0, 101);
+            if (doGame > max) max = doGame;
+
+            myPrintWriter.println(i + " - " + doGame);
         }
 
+        myPrintWriter.println("max - " + max);
+
+        myScanner.close();
         myPrintWriter.close();
     }
 }

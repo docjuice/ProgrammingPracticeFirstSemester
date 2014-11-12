@@ -33,6 +33,7 @@ public class LinkedNode{
         size--;
         return object;
     }
+
 }
 
 

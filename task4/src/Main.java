@@ -37,7 +37,7 @@ public class Main {
 
         int testsCount = 100;
         Tester myTester = new Tester();
-        myTester.setAnswersPrintWriterFile(checkFile);
+        //myTester.setAnswersPrintWriterFile(checkFile);
 
         for (int j = 0; j < testsCount; j++){
             myTester.setTestPrintWriterFile(readFile);
