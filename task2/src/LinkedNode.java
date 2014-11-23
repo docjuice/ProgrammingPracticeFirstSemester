@@ -34,6 +34,16 @@ public class LinkedNode{
         return object;
     }
 
+	public Node reverse(Node head){
+		Node answer = null;
+		while(head != null){
+			Node temp = head;
+			head = head.next;
+			temp.next = answer;
+			answer = temp;
+		}
+		return answer;
+	}
 }
 
 

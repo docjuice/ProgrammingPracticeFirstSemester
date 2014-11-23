@@ -15,8 +15,8 @@ public class Main {
 
     public static void readMatrix(double[] inMatrix, int N, Scanner inScanner) throws IOException{
         for (int i = 0; i < N * N; ++i){
-            inMatrix[i] = inScanner.nextDouble();
-        }
+		    inMatrix[i] = inScanner.nextDouble();
+	    }
     }
 
     public static void writeMatrix(double[] inMatrix, int N, PrintWriter inPrintWriter) throws IOException{
@@ -50,35 +50,58 @@ public class Main {
         }
     }
 
+	public static void generateTest(int n, File inFile) throws IOException{
+		PrintWriter myTestPW = new PrintWriter(inFile);
+		Random testRandom = new Random();
+
+		myTestPW.println(n);
+
+		for (int i = 0; i < n * n; i++){
+			myTestPW.print(testRandom.nextInt(10000) + "," + testRandom.nextInt(10000) + " ");
+		}
+		myTestPW.println();
+
+		for (int i = 0; i < n * n; i++){
+			myTestPW.print(testRandom.nextInt(10000) + "," + testRandom.nextInt(10000) + " ");
+		}
+		myTestPW.println();
+
+		myTestPW.close();
+	}
+
     public static void main(String[] args) throws IOException{
         File readFile = new File("input.txt");
-        Scanner myScanner = new Scanner(readFile);
-        PrintWriter myPrintWriter = new PrintWriter(System.out);
+	    PrintWriter myPrintWriter = new PrintWriter(System.out);
 
-        int N = myScanner.nextInt();
+	    for (int i = 1; i <= 100; i++){
+		    generateTest(i, readFile);
+		    Scanner myScanner = new Scanner(readFile);
 
-        double[] firstMatrix = new double[N * N];
-        double[] secondMatrix = new double[N * N];
-        double[] resultMatrix = new double[N * N];
+		    int N = myScanner.nextInt();
 
-        readMatrix(firstMatrix, N, myScanner);
-        readMatrix(secondMatrix, N, myScanner);
+		    double[] firstMatrix = new double[N * N];
+		    double[] secondMatrix = new double[N * N];
+		    double[] resultMatrix = new double[N * N];
 
-        long startTime1 = System.nanoTime();
-        multMatrix(firstMatrix, secondMatrix, resultMatrix, N);
-        long time1 = System.nanoTime() - startTime1;
+		    readMatrix(firstMatrix, N, myScanner);
+		    readMatrix(secondMatrix, N, myScanner);
 
-        transporateMatrix(secondMatrix, N);
+		    long startTime1 = System.nanoTime();
+		    multMatrix(firstMatrix, secondMatrix, resultMatrix, N);
+		    long time1 = System.nanoTime() - startTime1;
 
-        long startTime2 = System.nanoTime();
-        multTranspMatrix(firstMatrix, secondMatrix, resultMatrix, N);
-        long time2 = System.nanoTime() - startTime2;
+		    long startTime2 = System.nanoTime();
+		    transporateMatrix(secondMatrix, N);
+		    multTranspMatrix(firstMatrix, secondMatrix, resultMatrix, N);
+		    long time2 = System.nanoTime() - startTime2;
 
-        writeMatrix(resultMatrix, N, myPrintWriter);
-        myPrintWriter.println(time1 + " " + time2);
-        myPrintWriter.print(time1 - time2 + " - разность времени умножения при транспонировании");
+		    //writeMatrix(resultMatrix, N, myPrintWriter);
+		    //myPrintWriter.println(time1/Math.pow(10, 9) + " " + time2/Math.pow(10, 9));
+		    myPrintWriter.print("N == " + i + " -> " + (time2 - time1)/(Math.pow(N, 3)) + "\n");
 
-        myScanner.close();
-        myPrintWriter.close();
+		    myScanner.close();
+	    }
+
+	    myPrintWriter.close();
     }
 }

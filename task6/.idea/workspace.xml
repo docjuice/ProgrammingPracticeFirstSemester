@@ -4,7 +4,11 @@
     <list default="true" id="7800d948-6544-4d85-8fd5-f91cc62f5e6f" name="Default" comment="" />
     <ignored path="task6.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Main.java" changelist="7800d948-6544-4d85-8fd5-f91cc62f5e6f" time="1415809219598" ignored="false" />
+    <file path="/Main.java" changelist="7800d948-6544-4d85-8fd5-f91cc62f5e6f" time="1416226989628" ignored="false" />
+    <file path="$PROJECT_DIR$/../task5/src/Main.java" changelist="7800d948-6544-4d85-8fd5-f91cc62f5e6f" time="1416226994021" ignored="false" />
+    <file path="$PROJECT_DIR$/../task5/input.txt" changelist="7800d948-6544-4d85-8fd5-f91cc62f5e6f" time="1416227153570" ignored="false" />
+    <file path="$PROJECT_DIR$/../task2/src/LinkedNode.java" changelist="7800d948-6544-4d85-8fd5-f91cc62f5e6f" time="1416398348753" ignored="false" />
+    <file path="/LinkedNode.java" changelist="7800d948-6544-4d85-8fd5-f91cc62f5e6f" time="1416398345773" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +23,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <breakpoint_rules default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -53,7 +58,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <breakpoint_rules default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
@@ -67,7 +71,7 @@
       <file leaf-file-name="Main.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="0" selection-start="646" selection-end="646" vertical-scroll-proportion="0.39750445">
+            <state line="29" column="27" selection-start="801" selection-end="801" vertical-scroll-proportion="0.5900178">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -124,6 +128,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -158,8 +164,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -168,7 +172,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../task7" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../task2" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="dynamic.classpath" value="false" />
@@ -227,7 +231,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -315,6 +319,24 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="27" selection-start="801" selection-end="801" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="0" selection-start="646" selection-end="646" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="24" column="0" selection-start="646" selection-end="646" vertical-scroll-proportion="0.0">
@@ -482,7 +504,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="646" selection-end="646" vertical-scroll-proportion="0.39750445">
+        <state line="29" column="27" selection-start="801" selection-end="801" vertical-scroll-proportion="0.5900178">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

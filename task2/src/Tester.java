@@ -52,7 +52,7 @@ public class Tester {
 
     private static boolean check(Vector<Object> s1, Vector<Object> s2){
         for (int i = 0; i < s1.size(); i++){
-            if (!s1.get(i).equals(s2.get(s2.size() - i - 1))){
+            if (!s1.get(i).equals(s2.get(i))){
                 return false;
             }
         }
