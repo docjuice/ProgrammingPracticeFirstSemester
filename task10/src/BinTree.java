@@ -50,7 +50,8 @@ public class BinTree{
 	}
 
 	private boolean isNeedBrackets(char first, char second){
-		return !((first == '*' && second == '*') || (first == '+' && second == '+') || (first == '-' && second == '+'));
+		return !((first == '*' && second == '*') || (first == '+' && second == '+') || (first == '-' && second == '+') ||
+				(first == '-' && second == '-'));
 	}
 
 	public void recPreOrder(Item x){
@@ -62,6 +63,9 @@ public class BinTree{
 		if (isMathSymbol(x.element)){
 			boolean isNeedBrackets = false;
 			if (x.parent != null) isNeedBrackets = isNeedBrackets(x.element, x.parent.element);
+
+			if ((x.parent != null) && (!isMathSymbol(x.parent.left.element) && x.parent.element == '-'
+					&& x.parent.right.element == '-')) isNeedBrackets = true;
 
 			if (isNeedBrackets) x.string.append("(");
 			x.string.append(x.left.string);

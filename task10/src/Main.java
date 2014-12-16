@@ -6,8 +6,7 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) throws IOException {
-		File readFile = new File("input.txt");
-		Scanner myScanner = new Scanner(readFile);
+		Scanner myScanner = new Scanner(new File("input.txt"));
 		PrintWriter myPrintWriter = new PrintWriter(System.out);
 
 		String s = myScanner.nextLine();

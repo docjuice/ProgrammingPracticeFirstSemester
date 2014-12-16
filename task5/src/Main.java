@@ -70,38 +70,32 @@ public class Main {
 	}
 
     public static void main(String[] args) throws IOException{
-        File readFile = new File("input.txt");
-	    PrintWriter myPrintWriter = new PrintWriter(System.out);
 
-	    for (int i = 1; i <= 100; i++){
-		    generateTest(i, readFile);
-		    Scanner myScanner = new Scanner(readFile);
-
-		    int N = myScanner.nextInt();
+	    for (int j = 1; j <= 10; j++){
+		    int N = 1 << (0 + j);
 
 		    double[] firstMatrix = new double[N * N];
 		    double[] secondMatrix = new double[N * N];
 		    double[] resultMatrix = new double[N * N];
 
-		    readMatrix(firstMatrix, N, myScanner);
-		    readMatrix(secondMatrix, N, myScanner);
 
 		    long startTime1 = System.nanoTime();
 		    multMatrix(firstMatrix, secondMatrix, resultMatrix, N);
 		    long time1 = System.nanoTime() - startTime1;
 
-		    long startTime2 = System.nanoTime();
 		    transporateMatrix(secondMatrix, N);
+		    long startTime2 = System.nanoTime();
 		    multTranspMatrix(firstMatrix, secondMatrix, resultMatrix, N);
 		    long time2 = System.nanoTime() - startTime2;
 
 		    //writeMatrix(resultMatrix, N, myPrintWriter);
 		    //myPrintWriter.println(time1/Math.pow(10, 9) + " " + time2/Math.pow(10, 9));
-		    myPrintWriter.print("N == " + i + " -> " + (time2 - time1)/(Math.pow(N, 3)) + "\n");
+		    System.out.print("N == " + N + ":\n" +
+				    "без транспонирования: " + time1/(Math.pow(N, 3)) + "\n" +
+				    "с транспонированием: " + time2/(Math.pow(N, 3)) + "\n" +
+				    "ассимптотическая разница: " +  ((double)time1/time2) + "\n\n");
 
-		    myScanner.close();
 	    }
 
-	    myPrintWriter.close();
     }
 }

@@ -29,7 +29,7 @@ public class Main {
             if (j - l < r - i){
                 if (l < j) qsort(a, l, j);
                 l = i;
-            } else{
+            } else {
                 if (i < r) qsort(a, i, r);
                 r = j;
             }

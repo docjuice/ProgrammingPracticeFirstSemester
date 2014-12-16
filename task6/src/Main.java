@@ -1,5 +1,4 @@
-import java.util.*;
-import java.io.*;
+import java.io.IOException;
 
 public class Main {
 
@@ -17,22 +16,15 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException{
-        File readFile = new File("input.txt");
-        Scanner myScanner = new Scanner(readFile);
-        PrintWriter myPrintWriter = new PrintWriter(System.out);
-
         int max = 0;
 
-        for (int i = 1; i <= 100; i++){
-            int doGame = game(i, 0, 101);
+        for (int i = 1; i <= 140; i++){
+            int doGame = game(i, 0, 141);
             if (doGame > max) max = doGame;
 
-            myPrintWriter.println(i + " - " + doGame);
+            System.out.println(i + " - " + doGame);
         }
 
-        myPrintWriter.println("max - " + max);
-
-        myScanner.close();
-        myPrintWriter.close();
+        System.out.println("\nmax - " + max);
     }
 }

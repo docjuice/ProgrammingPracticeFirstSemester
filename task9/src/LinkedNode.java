@@ -46,10 +46,19 @@ public class LinkedNode{
 		Node b = first.next;
 
 		while (a != b){
-			if (a == null || b == null) return false;
+			if (b == null) return false;
 			a = a.next;
-			if (b.next != null) b = b.next.next; else
+			if (b.next != null){
+				b = b.next;
+			}
+			if (a == b){
+				break;
+			}
+			if (b.next != null){
+				b = b.next;
+			} else{
 				return false;
+			}
 		}
 		return true;
 	}
